@@ -9,7 +9,7 @@ Item {
     property var inputHeight: Screen.height * config.UIScale * 0.25
     property var inputWidth: Screen.width * config.UIScale
 
-    Column {
+    /*Column {
         spacing: 8
 
         anchors {
@@ -25,15 +25,15 @@ Item {
             id: sessionPanel
         }
 
-    }
+    }*/
 
     Column {
         spacing: 8
         width: inputWidth
 
         anchors {
-            bottom: parent.bottom
-            right: parent.right
+            verticalCenter: parent.verticalCenter
+            left: parent.left
         }
 
         UserPanel {

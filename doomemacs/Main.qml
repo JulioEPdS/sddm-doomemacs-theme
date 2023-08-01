@@ -28,10 +28,10 @@ Item {
 
         anchors {
             fill: parent
-            topMargin: config.Padding
-            rightMargin: config.Padding
-            bottomMargin: config.Padding
-            leftMargin: config.Padding
+            topMargin: parent.height * 0.08
+            //rightMargin: config.Padding
+            //bottomMargin: config.Padding
+            leftMargin: parent.width * 0.07
         }
 
         DateTimePanel {
@@ -39,7 +39,7 @@ Item {
 
             anchors {
                 top: parent.top
-                right: parent.right
+                left: parent.left
             }
 
         }
@@ -52,4 +52,8 @@ Item {
 
     }
 
+    Footer {
+        id: footer
+        anchors.bottom: parent.bottom
+    }
 }
