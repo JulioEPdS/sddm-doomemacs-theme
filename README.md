@@ -3,7 +3,9 @@
 [SDDM](https://github.com/sddm/sddm), but looking like the doom emacs editor.
 
 By now the color palet is the same as doom-emacs doomone.
-![doomone preview](preview/doomone.png)\
+![doomone preview](preview/doomone.png)
+
+[doom emacs](preview/doomemacs.png)
 
 Forked from aczw corners theme.
 ![aczw/sddm-theme-corners](https://github.com/aczw/sddm-theme-corners).
