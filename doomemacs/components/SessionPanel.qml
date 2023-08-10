@@ -2,8 +2,12 @@ import QtQml.Models 2.12
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+//import SddmComponents 2.0
+
 Item {
     property var session: sessionList.currentIndex
+
+    Component.onCompleted: sessionButton.text = sessionWrapper.items.get(sessionList.currentIndex).model.name
 
     implicitHeight: sessionButton.height
     implicitWidth: sessionButton.width
@@ -17,7 +21,7 @@ Item {
             id: sessionEntry
 
             height: inputHeight
-            width: parent.width
+            width: sessionButton.width  //parent.width
             highlighted: sessionList.currentIndex == index
             states: [
                 State {
@@ -26,7 +30,7 @@ Item {
 
                     PropertyChanges {
                         target: sessionEntryBg
-                        color: highlighted ? Qt.darker(config.PopupHighlight, 1.2) : Qt.darker(config.PopupBackground, 1.2)
+                        color: highlighted ? Qt.lighter(config.PopupHighlight, 1.2) : Qt.darker(config.PopupBackground, 1.2)
                     }
 
                 }
@@ -37,17 +41,18 @@ Item {
                 onClicked: {
                     sessionList.currentIndex = index;
                     sessionPopup.close();
+                    sessionButton.text = sessionWrapper.items.get(sessionList.currentIndex).model.name
                 }
             }
 
             contentItem: Text {
                 renderType: Text.NativeRendering
                 font.family: config.Font
-                font.pointSize: config.FontSize
-                font.bold: true
+                font.pointSize: 10
+                font.bold: false
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                color: highlighted ? config.PopupHighlightText : config.PopupHighlight
+                color: config.PopupBackground //highlighted ? config.PopupHighlightText : config.PopupHighlight
                 text: name
             }
 
@@ -72,14 +77,19 @@ Item {
 
     Button {
         id: sessionButton
-
+        display: AbstractButton.TextBesideIcon
         height: inputHeight
-        width: inputHeight
         hoverEnabled: true
+
+
         icon.source: Qt.resolvedUrl("../icons/settings.svg")
-        icon.height: height * 0.6
-        icon.width: width * 0.6
+        icon.height: height * 0.9
+        icon.width: height * 0.9
         icon.color: config.SessionIconColor
+        palette.buttonText: "#ffffff"
+
+
+
         onClicked: {
             sessionPopup.visible ? sessionPopup.close() : sessionPopup.open();
             sessionButton.state = "pressed";
@@ -137,9 +147,9 @@ Item {
     Popup {
         id: sessionPopup
 
-        width: inputWidth + padding * 2
-        x: sessionButton.width + sessionList.spacing
-        y: -(contentHeight + padding * 2) + sessionButton.height
+        width: sessionButton.width * 1.4
+        x: sessionButton.x  //sessionButton.width + sessionList.spacing
+        y: sessionButton.height * 1.3  //-(contentHeight + padding * 2) + sessionButton.height
         padding: 15
 
         background: Rectangle {
@@ -149,7 +159,10 @@ Item {
 
         contentItem: ListView {
             id: sessionList
-
+            anchors {
+                horizontalCenter: sessionPopup.horizontalCenter
+                verticalCenter: sessionPopup.verticalCenter
+            }
             implicitHeight: contentHeight
             spacing: 8
             model: sessionWrapper

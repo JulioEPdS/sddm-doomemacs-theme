@@ -27,7 +27,7 @@ Item {
         id: powerButton
 
         height: inputHeight
-        width: inputHeight
+        width: inputHeight * 2
         hoverEnabled: true
         icon.source: Qt.resolvedUrl("../icons/power.svg")
         icon.height: height
@@ -90,10 +90,10 @@ Item {
     Popup {
         id: powerPopup
 
-        height: inputHeight * 2.2 + padding * 2
-        x: powerButton.width + powerList.spacing
-        y: -height + powerButton.height
-        padding: 15
+        height: inputHeight * 0.9 + padding * 2
+        //x: powerButton.width + powerList.spacing
+        y: powerButton.height * 1.3
+        padding: 9
 
         background: Rectangle {
             radius: config.Radius * 1.8
@@ -104,7 +104,7 @@ Item {
             id: powerList
 
             implicitWidth: contentWidth
-            spacing: 8
+            spacing: 9
             orientation: Qt.Horizontal
             clip: true
             model: powerModel
@@ -112,8 +112,8 @@ Item {
             delegate: ItemDelegate {
                 id: powerEntry
 
-                height: inputHeight * 2.2
-                width: inputHeight * 2.2
+                height: inputHeight * 0.9
+                width: inputHeight * 0.9
                 display: AbstractButton.TextUnderIcon
                 states: [
                     State {
@@ -122,17 +122,12 @@ Item {
 
                         PropertyChanges {
                             target: powerEntryBg
-                            color: Qt.darker(config.PopupHighlight, 1.2)
+                            color: Qt.lighter(config.PopupHighlight, 1.2)
                         }
 
                         PropertyChanges {
-                            target: iconOverlay
+                            target: powerIcon //iconOverlay
                             color: Qt.darker(config.PopupHighlight, 1.2)
-                        }
-
-                        PropertyChanges {
-                            target: powerText
-                            opacity: 1
                         }
 
                     }
@@ -163,19 +158,6 @@ Item {
                         color: config.PopupBackground
                     }
 
-                    Text {
-                        id: powerText
-
-                        anchors.centerIn: parent
-                        renderType: Text.NativeRendering
-                        font.family: config.Font
-                        font.pointSize: config.FontSize
-                        font.bold: true
-                        horizontalAlignment: Text.AlignHCenter
-                        color: config.PopupBackground
-                        text: name
-                        opacity: 0
-                    }
 
                 }
 
@@ -204,15 +186,15 @@ Item {
                     property: "opacity"
                     from: 0
                     to: 1
-                    duration: 400
+                    duration: 300
                     easing.type: Easing.OutExpo
                 }
 
                 NumberAnimation {
-                    property: "x"
-                    from: powerPopup.x - (inputWidth * 0.1)
-                    to: powerPopup.x
-                    duration: 500
+                    property: "y"
+                    from: powerPopup.y - (inputWidth * 0.1)
+                    to: powerPopup.y
+                    duration: 400
                     easing.type: Easing.OutExpo
                 }
 
@@ -225,7 +207,7 @@ Item {
                 property: "opacity"
                 from: 1
                 to: 0
-                duration: 300
+                duration: 400
                 easing.type: Easing.OutExpo
             }
 

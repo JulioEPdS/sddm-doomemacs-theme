@@ -9,24 +9,6 @@ Item {
     property var inputHeight: Screen.height * config.UIScale * 0.25
     property var inputWidth: Screen.width * config.UIScale
 
-    /*Column {
-        spacing: 8
-
-        anchors {
-            bottom: parent.bottom
-            left: parent.left
-        }
-
-        PowerPanel {
-            id: powerPanel
-        }
-
-        SessionPanel {
-            id: sessionPanel
-        }
-
-    }*/
-
     Column {
         spacing: 8
         width: inputWidth
@@ -55,7 +37,6 @@ Item {
             width: parent.width
             enabled: user != "" && password != "" ? true : false
             hoverEnabled: true
-            text: "Login!!"
             onClicked: {
                 sddm.login(user, password, session);
             }
@@ -162,6 +143,21 @@ Item {
 
         }
 
+        Row {
+            spacing: 8
+            //Removed since the column + row is enough
+            /*anchors {
+                bottom: parent.bottom
+                bottomMargin: parent.height * 0.08
+                left: parent.left
+            }*/
+            PowerPanel {
+                id: powerPanel
+            }
+            SessionPanel {
+                id: sessionPanel
+            }
+        }
     }
 
     Connections {

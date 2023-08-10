@@ -23,16 +23,25 @@ Item {
         clip: true
     }
 
-    Item {
-        id: contentPanel
+    Column {
+        id: contentRow
+        spacing: 10
+
+        width: parent.width * 0.9
+        height: parent.height * 0.9
 
         anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        /*anchors {
             fill: parent
-            topMargin: parent.height * 0.08
+            //topMargin: parent.height * 0.08
             //rightMargin: config.Padding
             //bottomMargin: config.Padding
-            leftMargin: parent.width * 0.07
-        }
+            //leftMargin: parent.width * 0.07
+        }*/
 
         DateTimePanel {
             id: dateTimePanel

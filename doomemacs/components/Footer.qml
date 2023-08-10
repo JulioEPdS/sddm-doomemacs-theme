@@ -45,8 +45,8 @@ Rectangle {
         Text {
             id: txt1
             color: config.FooterForeground
-            font.family: "FiraCode Nerd Font"
-            font.pixelSize: 12
+            font.family: config.Font//"FiraCode Nerd Font"
+            font.pixelSize: config.FontSize//12
             text: "100"
             //leftPadding: 20.0
             anchors.verticalCenter: parent.verticalCenter
@@ -59,8 +59,8 @@ Rectangle {
                 id: txt2
                 font.bold: true
                 color: config.FooterGreenColor
-                font.family: "FiraCode Nerd Font"
-                font.pixelSize: 12
+                font.family: config.Font
+                font.pixelSize: config.FontSize
                 text: "sddmLogin/" //+ sddm.hostName + ("/doomOne.qml")
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -68,8 +68,8 @@ Rectangle {
                 id: txt3
                 font.bold:true
                 color: config.FooterWhiteColor
-                font.family: "FiraCode Nerd Font"
-                font.pixelSize: 12
+                font.family: config.Font
+                font.pixelSize: config.FontSize
                 text: qsTr (sddm.hostName) + ("/doomOne.qml")
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -78,8 +78,8 @@ Rectangle {
         Text {
             id: txt4
             color: config.FooterForeground
-            font.family: "FiraCode Nerd Font"
-            font.pixelSize: 12
+            font.family: config.Font
+            font.pixelSize: config.FontSize
             text: "50:50 25%"
             //leftPadding: 20.0
             anchors.verticalCenter: parent.verticalCenter
@@ -91,8 +91,8 @@ Rectangle {
         id: txt5
         font.bold: true
         color: config.FooterBlueColor
-        font.family: "FiraCode Nerd Font"
-        font.pixelSize: 12
+        font.family: config.Font
+        font.pixelSize: config.FontSize
         text: "Arch/Linux"
         anchors {
             right: parent.right
